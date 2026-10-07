@@ -47,7 +47,6 @@ export default function App() {
             <button className="film-card" key={film.id} onClick={() => setSelected(film.title)}>
               <img src={film.poster} />
               <div className="film-content">
-                <div className={film.available ? "availability available" : "availability unavailable"} />
                 <h4>{film.title}</h4>
                 <p>{film.genre} · {film.time}</p>
                 <button
@@ -59,6 +58,12 @@ export default function App() {
                 >
                   {favorites.includes(film.id) ? "★" : "☆"}
                 </button>
+                
+                <div className={film.available ? "availability available" : "availability unavailable"}>
+                  <span className="availability-text">
+                    {film.available ? "Actuellement disponible" : "Actuellement indisponible"}
+                  </span>
+                </div>
               </div>
             </button>
           ))}
