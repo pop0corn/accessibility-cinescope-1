@@ -36,7 +36,9 @@ export default function App() {
         <h1>Films à l’affiche</h1>
         <p className="intro">Découvrez la programmation de cette semaine.</p>
         <input
+          id="film-search"
           className="search"
+          type="search"
           placeholder="Rechercher un film"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
@@ -45,12 +47,14 @@ export default function App() {
         <div id="programme" className="film-grid">
           {filteredFilms.map((film) => (
             <button className="film-card" key={film.id} onClick={() => setSelected(film.title)}>
-              <img src={film.poster} />
+              <img src={film.poster} alt={`Affiche du film ${film.title}`} />
               <div className="film-content">
                 <h4>{film.title}</h4>
                 <p>{film.genre} · {film.time}</p>
                 <button
+                  type="button"
                   className="favorite"
+                  aria-label={favorites.includes(film.id) ? `Retirer ${film.title} des favoris` : `Ajouter ${film.title} aux favoris`}
                   onClick={(event) => {
                     event.stopPropagation();
                     toggleFavorite(film.id);
