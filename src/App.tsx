@@ -44,7 +44,7 @@ export default function App() {
 
         <div id="programme" className="film-grid">
           {filteredFilms.map((film) => (
-            <div className="film-card" key={film.id} onClick={() => setSelected(film.title)}>
+            <button className="film-card" key={film.id} onClick={() => setSelected(film.title)}>
               <img src={film.poster} />
               <div className="film-content">
                 <div className={film.available ? "availability available" : "availability unavailable"} />
@@ -60,7 +60,7 @@ export default function App() {
                   {favorites.includes(film.id) ? "★" : "☆"}
                 </button>
               </div>
-            </div>
+            </button>
           ))}
         </div>
 
